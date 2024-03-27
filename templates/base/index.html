@@ -46,84 +46,39 @@
                 </div>
             </div>
             <div class="row">
+                {% for service in service %}
                 <div class="col-md-4">
                     <div class="single-facility animate-box br-20" data-animate-effect="fadeInUp">
                         <span class="flaticon-world"></span>
-                        <h5>Услуга 1</h5>
                         <p>{{service.description}}</p>
                         <div class="facility-shape"> <span class="flaticon-world"></span> </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="single-facility animate-box br-20" data-animate-effect="fadeInUp">
-                        <span class="flaticon-car"></span>
-                        <h5>Услуга 2</h5>
-                        <p>{{service.description}}</p>
-                        <div class="facility-shape"> <span class="flaticon-car"></span> </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="single-facility animate-box br-20" data-animate-effect="fadeInUp">
-                        <span class="flaticon-bed"></span>
-                        <h5>Услуга 3</h5>
-                        <p>{{service.description}}</p>
-                        <div class="facility-shape"> <span class="flaticon-bed"></span></div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
     <!-- Services -->
     <section class="services">
         <div class="container">
+            {% for services in services%}
             <div class="row">
                 <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">
                     <div class="img left brl-20">
-                        <a href="#"><img src="{% static 'img/merrigarden/banner/1.jpg' %}" alt=""></a>
+                        <a href="#"><img src="{{services.image.url}}" alt=""></a>
                     </div>
                 </div>
                 <div class="col-md-6 p-0 bg-cream valign animate-box brr-20" data-animate-effect="fadeInRight">
                     <div class="content">
                         <div class="cont text-left">
-                            <h4>Услуга 1</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio excepturi officiis similique iste, iure rem? Libero dolorum id, laboriosam aliquid exercitationem suscipit dolores dolore neque aperiam minus ad molestias asperiores.</p>
+                            <h4>{{services.title}}</h4>
+                            <p>{{services.description|safe}}</p>
                             <div class="butn-dark br-20"> <a href="#"><span>Заказать услугу</span></a> </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6 bg-cream p-0 order2 valign animate-box brl-20" data-animate-effect="fadeInLeft">
-                    <div class="content">
-                        <div class="cont text-left">
-                            <h4>Услуга 2</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias aperiam ipsa accusamus molestias vero cum quo earum expedita voluptatibus illo fugit omnis fugiat tenetur neque maiores nostrum, placeat beatae ullam.</p>
-                            <div class="butn-dark br-20"> <a href="#"><span>Заказать услугу</span></a> </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 p-0 order1 animate-box" data-animate-effect="fadeInRight">
-                    <div class="img brr-20">
-                        <a href="#"><img src="{% static 'img/merrigarden/banner/2.jpg' %}" alt=""></a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">
-                    <div class="img left brl-20">
-                        <a href="#"><img src="{% static 'img/merrigarden/news/3.jpg' %}" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-6 p-0 bg-cream valign animate-box brr-20" data-animate-effect="fadeInRight">
-                    <div class="content">
-                        <div class="cont text-left">
-                            <h4>Услуга 3</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio excepturi officiis similique iste, iure rem? Libero dolorum id, laboriosam aliquid exercitationem suscipit dolores dolore neque aperiam minus ad molestias asperiores.</p>
-                            <div class="butn-dark br-20"> <a href="#"><span>Заказать услугу</span></a> </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
     <!-- Boss -->
@@ -131,19 +86,20 @@
         
     </section>
 
+
     <!-- Promo Video -->
     <section class="video-wrapper video section-padding bg-img bg-fixed" data-overlay-dark="3"
     data-background="{% static 'img/merrigarden/banner/1.jpg' %}">
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2 text-center">
-                <div class="section-subtitle"><span>{{admin.title}}</span></div>
-                <div class="section-title"><span>Видео о {{admin.title}}</span></div>
+                <div class="section-subtitle"><span>{{video.title}}</span></div>
+                <div class="section-title"><span>Видео о {{video.video_name}}</span></div>
             </div>
         </div>
         <div class="row">
             <div class="text-center col-md-12">
-                <a class="vid" href="https://youtu.be/7BGNAGahig8">
+                <a class="vid" href="{{video}}">
                     <div class="vid-butn">
                         <span class="icon">
                             <i class="ti-control-play"></i>

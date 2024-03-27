@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from apps.base.models import *
+from apps.secondary.models import *
 
 # Create your views here.
 def index(request):
@@ -7,6 +8,9 @@ def index(request):
     footer = Footer.objects.latest('id')
     banner = Banner.objects.all().order_by("-id")[:2]
     banner_all = Banner.objects.all()
+    service = Service.objects.all()  
+    services = Services.objects.all()
+    video = Video.objects.latest("id")  
     if request.method == 'POST':
         fullname = request.POST.get("fullname")
         phone = request.POST.get("phone")
@@ -31,8 +35,9 @@ def about_us(request):
 
 def team(request):
     # setting = Settings.objects.latest('id')
-    team = Team.objects.all()
     footer = Footer.objects.all()
+    admin = Admin.objects.latest('id')
+    team = Team.objects.all()
     # founder = Founder.objects.latest('id')
     if request.method =="POST":
         name = request.POST.get('name')
@@ -72,6 +77,7 @@ def news(request):
 def gallery(request):
     admin = Admin.objects.latest('id')
     footer = Footer.objects.latest('id')
+    photoes = Gallery.objects.all()
     if request.method == 'POST':
         fullname = request.POST.get("fullname")
         phone = request.POST.get("phone")
@@ -102,5 +108,4 @@ def contact(request):
             result = FooterPost.objects.create(fullname = fullname, phone = phone, date = date, adults_quantity = adults_quantity, childs_quantity = childs_quantity)
     return render(request, 'contact.html', locals())
 
-def service(request):
-    service = Service.objects.all()  
+ 

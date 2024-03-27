@@ -115,28 +115,55 @@ class FooterPost(models.Model):
         verbose_name = 'Бронированные'
         verbose_name_plural = 'Бронированные'
 
-           
 class Team(models.Model):
-    image = ResizedImageField(force_format="WEBP", quality=100, upload_to='team/',verbose_name="Фотография",blank = True, null = True)
+    image = models.ImageField( upload_to='team/', verbose_name="Фотография")
     title = models.CharField( max_length=255, verbose_name="Имя")
-    email = models.EmailField(verbose_name="Почта",blank=True,null=True)
-    descriptions = models.TextField(verbose_name="Описание")
-    whatsapp = models.URLField(verbose_name='Whatspp URL',blank=True, null=True )
-    instagram = models.URLField(verbose_name='Instagram URL',blank=True, null=True )
-    youtube = models.URLField(verbose_name='Youtube URL',blank=True, null=True )
-    facebook = models.URLField(verbose_name='Facebook URL',blank=True, null=True)
+    email = models.EmailField(verbose_name="Почта")
+    descriptions = models.TextField(verbose_name="Работа")
+    instagram = models.URLField(verbose_name='Instagram URL' )
+    youtube = models.URLField(verbose_name='Twitter URL' )
+    facebook = models.URLField(verbose_name='Facebook URL')
+
     def __str__(self):
         return self.title
     
     class Meta:
             verbose_name = "Наша команда"
-            verbose_name_plural = "Наша команда"
+            verbose_name_plural = "Наша команда"           
 
 class Service(models.Model):
     description = models.TextField(verbose_name= 'Описание услуги')
 
-
+    def __str__(self):
+        return self.description
     
     class Meta:
         verbose_name = 'Услуга'
         verbose_name_plural = 'Услуги'
+
+class Services(models.Model):
+    image = models.ImageField(upload_to='service_image/', verbose_name='Фото')
+    title = models.CharField(max_length = 255, verbose_name = 'Название')
+    description = models.TextField(verbose_name = 'Описание услуги')
+
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = 'Услуга 2'
+        verbose_name_plural = 'Услуги 2'
+
+
+class Video(models.Model):
+    title = models.CharField(max_length = 255, verbose_name = 'Заголовок')
+    video_name = models.CharField(max_length = 255, verbose_name = 'Название видео')
+    video = models.URLField(verbose_name = 'URL video')
+
+
+    def __str__(self):
+        return self.title
+    
+
+    class Meta:
+        verbose_name = 'Видео'
+        verbose_name_plural = 'Видео'
