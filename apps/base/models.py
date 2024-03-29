@@ -1,5 +1,5 @@
 from django.db import models
-from django_resized.forms import ResizedImageField
+# from django_resized.forms import ResizedImageField
 
 # Create your models here.
 class Admin(models.Model):
